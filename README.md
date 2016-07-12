@@ -14,8 +14,19 @@ You should use php for one of the tasks and javascript for the other (you can ch
 
 ## Solution
 
-For task 1, I will use NodeJS to pull down tweets from Twitter. I will log the HTTP requests as I go.
+### Task 1
 
-For task 2, I will install WAMP and use PHP to grab the language data, JSON decode it, and output the language names. I will also log the HTTP requests as I go.
+I will use NodeJS to grab the language data, JSON decode it, and output the language names. I will log the HTTP requests as I go using a lightweight HTTP module.
+
+### Task 2
+
+I will install WAMP and use PHP to pull down tweets from Twitter. I will log the HTTP requests as I go using a lightweight PHP HTTP library and install it with Composer.
+
+Rename the default www folder in WAMP to something else, and make a new www folder as a symlink to Pronghorn's php folder using this command (and replace with proper paths):
+
+    mklink /d C:\wamp\www C:\Users\hal\documents\pronghorn\php
+
+
+
 
 
