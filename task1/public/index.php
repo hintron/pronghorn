@@ -3,8 +3,6 @@
 error_log("Hello World!");
 
 require "../php/tweets.php"
-
-
 ?>
 
 <!DOCTYPE html>

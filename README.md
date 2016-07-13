@@ -30,6 +30,11 @@ See https://technet.microsoft.com/en-us/library/cc753194(v=ws.11).aspx
 
 It will create softlinks by default. For difference between soft links and hard links, see http://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link
 
+Use the Guzzle HTTP/REST lightweight library. (I chose Guzzle over Requests or Unirest because Guzzle seems to deal more with REST, and Twitter's API is all REST-based. See http://requests.ryanmccue.info/docs/why-requests.html).
+
+Create a composer.json file with guzzle specified. Then install it with composer by navigating to task1/ folder and running "composer install" in powershell.
+
+
 
 
 

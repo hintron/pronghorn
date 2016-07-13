@@ -1,8 +1,11 @@
 <?php
-error_log("Getting tweets...");
-// error_log(get_include_path());
+// Require the composer autoload, so we can use Guzzle
+require "../vendor/autoload.php";
 
-// TODO: Get the http library code in here and start pulling down tweets from twitter
+error_log("Getting tweets...");
+
+// TODO: Start using Guzzle to pull down tweets from Twitter
+
 
 
 ?>
