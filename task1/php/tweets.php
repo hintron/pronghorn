@@ -1,22 +1,14 @@
 <?php
-// Require the Composer autoload, so we can use Guzzle
+// Require the Composer autoload, so we can use modules without requiring them explicitly
 require "../vendor/autoload.php";
-// Twitter API oauth wrapper
-// Use it to create the proper oauth signature, but then siphon url and signature through Guzzle
-require_once('../vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php');
+
+// Not needed with autoloader...
+// require_once('../vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php');
 
 error_log("Getting tweets...");
 
-// Start using Guzzle to pull down tweets from Twitter
-use GuzzleHttp\Client;
-
-$client = new Client([
-    // Base URI is used with relative requests
-    'base_uri' => 'https://api.twitter.com/1.1',
-]);
-
-
-
+// Twitter API oauth wrapper
+// Use it to create the proper oauth signature, but then siphon url and signature through Guzzle
 
 // This file will contain these vars:
     // $customer_key
@@ -37,7 +29,8 @@ $settings = array(
 );
 
 $twitter_request_url = 'https://api.twitter.com/1.1/search/tweets.json';
-$twitter_request_get_fields = '?q=%23lingotek&result_type=recent';
+// $twitter_request_get_fields = '?q=%23lingotek&result_type=recent';
+$twitter_request_get_fields = '?q=lingotek';
 $twitter_request_method = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 
@@ -46,35 +39,46 @@ $twitter = new TwitterAPIExchange($settings);
 // it creates a signature according to this document: https://dev.twitter.com/oauth/overview/creating-signatures
 $twitter->setGetfield($twitter_request_get_fields);
 $twitter->buildOauth($twitter_request_url, $twitter_request_method);
-echo $twitter->performRequest();
+$json = $twitter->performRequest();
 
-// $url = 'https://api.twitter.com/1.1/followers/list.json';
-// $getfield = '?username=J7mbo&skip_status=1';
-// $requestMethod = 'GET';
-// $twitter = new TwitterAPIExchange($settings);
-// echo $twitter->setGetfield($getfield)
-             // ->buildOauth($url, $requestMethod)
-             // ->performRequest();
+// echo $json;
+// Pass true to turn objects into assc. arrays, for easy iteration
+$response = json_decode($json, true);
+
+// error_log(print_r($response,1));
+
+// Display some simple data
+if(array_key_exists('statuses', $response)){
+    echo "<h2>" . sizeof($response['statuses']) . " Statuses:</h2>";
+
+    foreach ($response['statuses'] as $value) {
+        echo "<h3>" /*. $value['created_at'] . ": "*/ . $value['user']['name'] . " said, \"" . $value['text'] . "\"</h3>";
+    }
+}
+else {
+    error_log("Could not find statuses!");
+}
 
 
-// error_log(print_r($twitter,1));
+// TODO: Need to get actual HTTP response codes!
 
 
-// TODO: Use Guzzle to execute the actual http request, so I can monitor the HTTP responses? Or can I do that just fine with the twitter api exchange tool?
+// TODO: Use Guzzle to execute the actual http request, so I can monitor the HTTP responses?
+// TODO: To do this, I will probably need to fork the twitter api code, since I can't get the authentication headers or
 
 
+// use GuzzleHttp\Client;
 
+// $client = new Client([
+//     // Base URI is used with relative requests
+//     'base_uri' => 'https://api.twitter.com/1.1',
+// ]);
 
 // $client->setDefaultOption('verify', false);
 // $response = $client->request('GET', '/', ['verify' => true]);
 // $response = $client->request('GET', 'http://gmc.lingotek.com/language');
 // $response = $client->request('GET', 'https://api.twitter.com/oauth2/token');
 // $response = $client->request('GET', 'https://api.twitter.com/oauth/request_token');
-
-
-
-
-
 
 
 // if(isset($response) && $response != null){

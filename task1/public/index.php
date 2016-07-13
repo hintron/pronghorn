@@ -1,6 +1,6 @@
 <?php
 // Test to see if we are writing to the php_error.log file
-error_log("Hello World!");
+error_log("Starting up Pronghorn Task 1...");
 
 
 ?>
@@ -13,7 +13,7 @@ error_log("Hello World!");
 </head>
 <body>
     <h1>
-        Hello World!
+        Pronghorn - Task 1
     </h1>
     <?php
         // Get the tweets in HTML form
