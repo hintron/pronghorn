@@ -36,22 +36,31 @@ $settings = array(
     'consumer_secret' => $customer_secret
 );
 
-$twitter = new TwitterAPIExchange($settings);
-
-
 $twitter_request_url = 'https://api.twitter.com/1.1/search/tweets.json';
-
-
+$twitter_request_get_fields = '?q=%23lingotek&result_type=recent';
+$twitter_request_method = 'GET';
+$twitter = new TwitterAPIExchange($settings);
 
 // TODO: Create the oauth signature
 // This basically does oauth stuff for me, so I don't have to
 // it creates a signature according to this document: https://dev.twitter.com/oauth/overview/creating-signatures
-// $twitter->buildOauth();
+$twitter->setGetfield($twitter_request_get_fields);
+$twitter->buildOauth($twitter_request_url, $twitter_request_method);
+echo $twitter->performRequest();
 
-// Use Guzzle to execute the actual http request, so I can monitor the HTTP responses
+// $url = 'https://api.twitter.com/1.1/followers/list.json';
+// $getfield = '?username=J7mbo&skip_status=1';
+// $requestMethod = 'GET';
+// $twitter = new TwitterAPIExchange($settings);
+// echo $twitter->setGetfield($getfield)
+             // ->buildOauth($url, $requestMethod)
+             // ->performRequest();
 
 
+// error_log(print_r($twitter,1));
 
+
+// TODO: Use Guzzle to execute the actual http request, so I can monitor the HTTP responses? Or can I do that just fine with the twitter api exchange tool?
 
 
 
@@ -68,29 +77,19 @@ $twitter_request_url = 'https://api.twitter.com/1.1/search/tweets.json';
 
 
 
-if(isset($response) && $response != null){
-    error_log("parsing response...");
+// if(isset($response) && $response != null){
+//     error_log("parsing response...");
 
-    $code = $response->getStatusCode(); // 200
-    $reason = $response->getReasonPhrase(); // OK
+//     $code = $response->getStatusCode(); // 200
+//     $reason = $response->getReasonPhrase(); // OK
 
-    echo "<h2>$code $reason</h2>";
+//     echo "<h2>$code $reason</h2>";
 
-    $body = $response->getBody();
+//     $body = $response->getBody();
 
-    echo $body;
+//     echo $body;
 
-}
-
-// error_log(print_r($body,1));
-
-
-
-// echo $body;
-
-
-// error_log(var_dump($response,1));
-// var_dump($response,1);
+// }
 
 
 ?>
