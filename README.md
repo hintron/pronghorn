@@ -34,7 +34,18 @@ Use the Guzzle HTTP/REST lightweight library. I chose Guzzle (https://github.com
 
 Create a composer.json file with guzzle specified. Then install it with Composer by navigating to task1/ folder and running "composer install" in powershell. Composer will automatically download everything and then create a lock file.
 
+Twitter unfortunately will not allow access to its API without oauth. This means I need to get a Twitter developer account and set up oauth before I can query data.
 
+This is a good how-to document I found: http://stackoverflow.com/questions/12916539/simplest-php-example-for-retrieving-user-timeline-with-twitter-api-version-1-1
+
+I need to quickly read up and figure out how oauth works: https://hueniverse.com/oauth/guide/terminology/
+
+Guzzle was using curl, and curl wasn't working due to an SSL Certificate problem. It couldn't find the file with all the certificates of the CAs. So I followed this (http://stackoverflow.com/a/34883260/1416379), downloaded the most recent cacert.pem file from curl's website (https://curl.haxx.se/docs/caextract.html), pasted it into C:/wamp/, and set
+    curl.cainfo = "C:\wamp\cacert.pem"
+in my php.ini file and restarted all services. This seemed to solve the issue. See also http://docs.guzzlephp.org/en/latest/request-options.html#verify-option
+
+
+Twitter uses oauth 1.0. To initially get data from twitter, I went to https://dev.twitter.com/oauth/tools/signature-generator/12599346 to create an oauth signature using the tokens I generated for my Pronghorn app. This created a curl command that was able to get data from Twitter.
 
 
 
