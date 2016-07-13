@@ -1,6 +1,9 @@
 <?php
 // Require the Composer autoload, so we can use Guzzle
 require "../vendor/autoload.php";
+// Twitter API oauth wrapper
+// Use it to create the proper oauth signature, but then siphon url and signature through Guzzle
+require_once('../vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php');
 
 error_log("Getting tweets...");
 
@@ -13,19 +16,57 @@ $client = new Client([
 ]);
 
 
+
+
+// This file will contain these vars:
+    // $customer_key
+    // $customer_secret
+    // $access_token
+    // $access_token_secret
+require "../php/secret.php";
+// NOTE: This file is NOT saved in Git, since this code is public
+
+// Build the oauth signature using TwitterAPIExchange
+// See https://github.com/J7mbo/twitter-api-php
+
+$settings = array(
+    'oauth_access_token' => $access_token,
+    'oauth_access_token_secret' => $access_token_secret,
+    'consumer_key' => $customer_key,
+    'consumer_secret' => $customer_secret
+);
+
+$twitter = new TwitterAPIExchange($settings);
+
+
+$twitter_request_url = 'https://api.twitter.com/1.1/search/tweets.json';
+
+
+
+// TODO: Create the oauth signature
+// This basically does oauth stuff for me, so I don't have to
+// it creates a signature according to this document: https://dev.twitter.com/oauth/overview/creating-signatures
+// $twitter->buildOauth();
+
+// Use Guzzle to execute the actual http request, so I can monitor the HTTP responses
+
+
+
+
+
+
+
 // $client->setDefaultOption('verify', false);
 // $response = $client->request('GET', '/', ['verify' => true]);
-
-// var_dump(openssl_get_cert_locations());
-
-
 // $response = $client->request('GET', 'http://gmc.lingotek.com/language');
-// $response = $client->request('GET', '');
-$response = $client->request('GET', 'https://api.twitter.com/oauth2/token');
-$response = $client->request('GET', 'https://api.twitter.com/oauth/request_token');
+// $response = $client->request('GET', 'https://api.twitter.com/oauth2/token');
+// $response = $client->request('GET', 'https://api.twitter.com/oauth/request_token');
 
-// To get an Oauth 2 Bearer Token
-// https://api.twitter.com/oauth2/token
+
+
+
+
+
 
 if(isset($response) && $response != null){
     error_log("parsing response...");
