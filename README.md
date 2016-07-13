@@ -10,7 +10,7 @@ Complete the following mini-tasks using whatever resources you'd like:
 
 3. List the HTTP requests (i.e., HTTP method, URL) and responses (i.e., HTTP status code) used for both #1 and #2 above.
 
-You should use php for one of the tasks and javascript for the other (you can choose which, either way is fine).  Again, we encourage you to use the internet as much as you want --- we just ask that you share whatever sources you use.  We are interested in how you go about this process and that you can demonstrate your understanding of what is happening technically.
+You should use php for one of the tasks and javascript for the other (you can choose which, either way is fine).  Again, we encourage you to use the internet as much as you want --- we just ask that you share whatever sources you use.  We are interested in how you go about this process and that you can demonstrate your understanding of what is happening technically.N
 
 ## Solution
 
@@ -22,9 +22,13 @@ I will use NodeJS to grab the language data, JSON decode it, and output the lang
 
 I will install WAMP and use PHP to pull down tweets from Twitter. I will log the HTTP requests as I go using a lightweight PHP HTTP library and install it with Composer.
 
-Rename the default www folder in WAMP to something else, and make a new www folder as a symlink to Pronghorn's php folder using this command (and replace with proper paths):
+Rename the default www folder in WAMP to something else, and make a new www folder as a symlink to Pronghorn/task1/public/ folder using cmd (and replace with proper paths):
 
-    mklink /d C:\wamp\www C:\Users\hal\documents\pronghorn\php
+    mklink /d C:\wamp\www C:\Users\hal\documents\pronghorn\task1\public
+
+See https://technet.microsoft.com/en-us/library/cc753194(v=ws.11).aspx
+
+It will create softlinks by default. For difference between soft links and hard links, see http://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link
 
 
 
