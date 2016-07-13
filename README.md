@@ -20,7 +20,7 @@ I will use NodeJS to grab the language data, JSON decode it, and output the lang
 
 ### Task 2
 
-I will install WAMP and use PHP to pull down tweets from Twitter. I will log the HTTP requests as I go using a lightweight PHP HTTP library and install it with Composer.
+I will install WAMP and use PHP to pull down tweets from Twitter. I will log the HTTP requests as I go using a lightweight PHP HTTP library and install it with Composer (https://getcomposer.org/).
 
 Rename the default www folder in WAMP to something else, and make a new www folder as a symlink to Pronghorn/task1/public/ folder using cmd (and replace with proper paths):
 
@@ -30,9 +30,9 @@ See https://technet.microsoft.com/en-us/library/cc753194(v=ws.11).aspx
 
 It will create softlinks by default. For difference between soft links and hard links, see http://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link
 
-Use the Guzzle HTTP/REST lightweight library. (I chose Guzzle over Requests or Unirest because Guzzle seems to deal more with REST, and Twitter's API is all REST-based. See http://requests.ryanmccue.info/docs/why-requests.html).
+Use the Guzzle HTTP/REST lightweight library. I chose Guzzle (https://github.com/guzzle/guzzle) over Requests (https://github.com/rmccue/Requests) or Unirest-php (https://github.com/Mashape/unirest-php) because Guzzle seems to deal more with REST, and Twitter's API is all REST-based. See http://requests.ryanmccue.info/docs/why-requests.html).
 
-Create a composer.json file with guzzle specified. Then install it with composer by navigating to task1/ folder and running "composer install" in powershell.
+Create a composer.json file with guzzle specified. Then install it with Composer by navigating to task1/ folder and running "composer install" in powershell. Composer will automatically download everything and then create a lock file.
 
 
 
