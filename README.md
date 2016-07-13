@@ -48,7 +48,9 @@ Twitter uses oauth 1.0. To initially get data from twitter, I went to https://de
 
 I will use NodeJS to grab the language data, JSON decode it, and output the language names. I will log the HTTP requests as I go using a lightweight HTTP module.
 
-I will look into http module, specifically the request() function.
+I will look into the http module, specifically the request() function. Since there is no authentication getting in the way of the language data, it should be trivial.
+
+
 
 
 
