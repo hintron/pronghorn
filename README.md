@@ -16,10 +16,6 @@ You should use php for one of the tasks and javascript for the other (you can ch
 
 ### Task 1
 
-I will use NodeJS to grab the language data, JSON decode it, and output the language names. I will log the HTTP requests as I go using a lightweight HTTP module.
-
-### Task 2
-
 I will install WAMP and use PHP to pull down tweets from Twitter. I will log the HTTP requests as I go using a lightweight PHP HTTP library and install it with Composer (https://getcomposer.org/).
 
 Rename the default www folder in WAMP to something else, and make a new www folder as a symlink to Pronghorn/task1/public/ folder using cmd (and replace with proper paths):
@@ -47,6 +43,12 @@ in my php.ini file and restarted all services. This seemed to solve the issue. S
 
 Twitter uses oauth 1.0. To initially get data from twitter, I went to https://dev.twitter.com/oauth/tools/signature-generator/12599346 to create an oauth signature using the tokens I generated for my Pronghorn app. This created a curl command that was able to get data from Twitter.
 
+
+### Task 2
+
+I will use NodeJS to grab the language data, JSON decode it, and output the language names. I will log the HTTP requests as I go using a lightweight HTTP module.
+
+I will look into http module, specifically the request() function.
 
 
 
