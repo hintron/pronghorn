@@ -43,11 +43,18 @@ $json = $twitter->performRequest();
 // echo $json;
 // Pass true to turn objects into assc. arrays, for easy iteration
 $response = json_decode($json, true);
-
 // error_log(print_r($response,1));
+
+echo "<p>HTTP Method: $twitter_request_method</p>";
+echo "<p>URL: $twitter_request_url$twitter_request_get_fields</p>";
+echo "<p>HTTP Response Code: " . $twitter->lastResponseCode  . "</p>";
+// NOTE: I added a public lastResponseCode field to the twitter api code and then used
+// curl_getinfo($feed, CURLINFO_RESPONSE_CODE); inside the performRequest() function to get the status
+// TODO: To make this permanent, I will need to fork the twitter api code
 
 // Display some simple data
 if(array_key_exists('statuses', $response)){
+
     echo "<h2>" . sizeof($response['statuses']) . " Statuses:</h2>";
 
     foreach ($response['statuses'] as $value) {
@@ -59,9 +66,7 @@ else {
 }
 
 
-// TODO: Need to get actual HTTP response codes!
-// TODO: Use Guzzle to execute the actual http request, so I can monitor the HTTP responses?
-// TODO: To do this, I will probably need to fork the twitter api code, since I can't get the authentication headers or base url string without it doing ther request as well, and losing out on the header data
+// No Longer Used:
 
 
 // use GuzzleHttp\Client;
