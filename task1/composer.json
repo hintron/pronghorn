@@ -1,6 +1,5 @@
 {
    "require": {
-      "guzzlehttp/guzzle": "~6.0",
       "j7mbo/twitter-api-php": "dev-master"
    }
 }

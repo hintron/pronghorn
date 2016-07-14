@@ -8,7 +8,7 @@ require "../vendor/autoload.php";
 error_log("Getting tweets...");
 
 // Twitter API oauth wrapper
-// Use it to create the proper oauth signature, but then siphon url and signature through Guzzle
+// Use it to create the proper oauth signature
 
 // This file will contain these vars:
     // $customer_key
@@ -64,36 +64,5 @@ if(array_key_exists('statuses', $response)){
 else {
     error_log("Could not find twitter statuses!");
 }
-
-
-// No Longer Used:
-
-
-// use GuzzleHttp\Client;
-// $client = new Client([
-//     // Base URI is used with relative requests
-//     'base_uri' => 'https://api.twitter.com/1.1',
-// ]);
-
-// $client->setDefaultOption('verify', false);
-// $response = $client->request('GET', '/', ['verify' => true]);
-// $response = $client->request('GET', 'http://gmc.lingotek.com/language');
-// $response = $client->request('GET', 'https://api.twitter.com/oauth2/token');
-// $response = $client->request('GET', 'https://api.twitter.com/oauth/request_token');
-
-// if(isset($response) && $response != null){
-//     error_log("parsing response...");
-
-//     $code = $response->getStatusCode(); // 200
-//     $reason = $response->getReasonPhrase(); // OK
-
-//     echo "<h2>$code $reason</h2>";
-
-//     $body = $response->getBody();
-
-//     echo $body;
-
-// }
-
 
 ?>

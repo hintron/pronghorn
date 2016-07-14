@@ -30,6 +30,8 @@ var req = http.request(options, (res) => {
 
   // console.log(res);
   console.log(`HTTP Status Code: ${res.statusCode}`);
+  // Alternate way of getting URL of request
+  // console.log(`URL: ${res.req.agent.protocol}//${res.client._host}${res.req.path}`);
 
   // Note: The data event can happen multiple times to get all the data out!
   res.on('data', (chunk) => {
