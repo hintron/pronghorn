@@ -50,7 +50,11 @@ I will use NodeJS to grab the language data, JSON decode it, and output the lang
 
 I will look into the http module, specifically the request() function. Since there is no authentication getting in the way of the language data, it should be trivial.
 
+This showed me how to get all the chunks of data into one piece: https://docs.nodejitsu.com/articles/HTTP/clients/how-to-create-a-HTTP-request/
 
 
+### Task 3
+
+Done throughout tasks 1 and 2
 
 
