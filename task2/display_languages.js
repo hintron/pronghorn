@@ -26,6 +26,9 @@ var req = http.request(options, (res) => {
 
   var all_data = '';
 
+  // console.log(res);
+  console.log(`HTTP Status Code: ${res.statusCode}`);
+
   // Note: The data event can happen multiple times to get all the data out!
   res.on('data', (chunk) => {
     // console.log("Data event!!!");
