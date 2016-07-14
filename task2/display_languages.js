@@ -19,6 +19,8 @@ var options = {
 };
 
 
+// req is an instance of the http.ClientRequest class
+// See https://nodejs.org/api/http.html#http_class_http_clientrequest
 var req = http.request(options, (res) => {
   // console.log(`STATUS: ${res.statusCode}`);
   // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
